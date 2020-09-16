@@ -1,12 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+
 <style type="text/css"> BODY{ font-family:Arial, Helvetica, sans-serif } </style>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="icon" type="image/png" href="icon.png" />
-<title>Ingreso Empresas- APPAUSA WEB</title>
+<title>Ingreso Administrador - APPAUSA WEB</title>
 <style type="text/css">
-#apDiv1 {
+#Main {
 	position: absolute;
 	left: 0px;
 	top: 0px;
@@ -35,7 +36,7 @@
 	width: 434px;
 	height: 409px;
 	z-index: 2;
-	background-image:url(bgInicio.png)
+	background:url(bgInicio.png)
 }
 #apDiv4 {
 	position: absolute;
@@ -64,8 +65,8 @@
 }
 #apDiv7 {
 	position: absolute;
-	left: 51px;
-	top: 35px;
+	left: 49px;
+	top: 31px;
 	width: 345px;
 	height: 47px;
 	z-index: 4;
@@ -80,16 +81,16 @@
 }
 #apDiv9 {
 	position: absolute;
-	left: 52px;
-	top: 129px;
+	left: 49px;
+	top: 91px;
 	width: 346px;
-	height: 205px;
+	height: 272px;
 	z-index: 5;
 }
 #apDiv10 {
 	position: absolute;
-	left: 513px;
-	top: 385px;
+	left: 515px;
+	top: 408px;
 	width: 344px;
 	height: 45px;
 	z-index: 6;
@@ -100,17 +101,19 @@
 	top: 113px;
 	width: 1366px;
 	height: 554px;
-	z-index: 7;
+	z-index: 1;
+	color: #D6D6D6;
 }
 #apDiv1 #apDiv11 #apDiv3 #apDiv7 h1 {
 	color: #000000;
 }
 </style>
 <link href="animaciones.css" rel="stylesheet" type="text/css" media="all" />
+
 </head>
 
 <body>
-<div id="apDiv1">
+<div id="Main">
   <div id="apDiv2">
     <div id="apDiv4"><a title="Pagina Principal" href="index.html"><img src="icono.png" width="72" height="73"></a></div>
 	<div id="apDiv5">
@@ -119,22 +122,22 @@
   </div>
   <div align="center"></div>
 <div id="apDiv11">
-<img src="banner.jpg" />
-<div id="apDiv3" >
-  <div align="center"></div>
-<div id="apDiv7" align="center"><h1>INGRESO</h1></div>
+<img src="banner.jpg" class="imagen"/>
+  <div id="apDiv3" >
+    <div align="center"></div>
+    <div id="apDiv7" align="center"><h1>INGRESO</h1></div>
 <div id="apDiv9" align="center">
 <form action="." oninput="range_control_value.value = range_control.valueAsNumber">
 <p align="center">Correo Electronico: <input type="text" name="name_control" autofocus required /></p>
-<p>Contraseña: 
-  <input type="password" name="password_control1" pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$" required /></p>
-<p></p>
-<input type="button" value="Ingresar" onClick="location.href='paginaAdmons.html'" />
+<p>
+  <input type="password" name="password_control1" pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$" required />
+  Contraseña:  </p>
+<button type="submit" onClick="location.href='paginaAdmons.html'">Ingresar</button>
 <!--onClick="validarContraseña()"-->
 </form>
 </div>
 </div>
-<div id="apDiv6" >Descripción</div>
+<div id="apDiv6" ><p>Descripción</div>
 <div id="apDiv10"><p style="text-align:center;"><a href="contrasenaOlvidada.html"> Olvide mi contraseña</a></p></div>
 </div>
 </div> 

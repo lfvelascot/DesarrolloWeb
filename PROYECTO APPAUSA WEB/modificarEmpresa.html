@@ -22,6 +22,7 @@
 	z-index: 2;
 }
 </style>
+<link href="EMPRESAS/formularios.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -30,7 +31,7 @@
 
 <div id="apDiv2">
 <form action="." oninput="range_control_value.value = range_control.valueAsNumber"> 
-<p> Ingrese el NIT de la Empresa a modificar; <input type="text" name="id_control" /> <input type="submit" value="Buscar" /></p>
+<p> Ingrese el NIT de la Empresa a modificar:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input  type="text" class="espacio" name="id_control"/> <button type="submit" class="boton1">Buscar</button></p>
 </form>
 <h2>Datos Empresa:</h2>
 <form action="." oninput="range_control_value.value = range_control.valueAsNumber"> 
@@ -44,7 +45,7 @@
 <p>Descripción:</p>
 <textarea name="descripcionEmp" rows="10" cols="100">Descripcion de la empresa</textarea>
 
-<p align="center"><input type="submit" value="Registrar empresa" /></p>
+<p align="center"><button type="submit" >Registrar empresa</button></p>
 </form>
 </div>
 </div>

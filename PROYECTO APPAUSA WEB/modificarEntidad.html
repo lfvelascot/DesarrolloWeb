@@ -22,6 +22,7 @@
 	z-index: 2;
 }
 </style>
+<link href="EMPRESAS/formularios.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -29,8 +30,8 @@
 <h1 align="center">Modificar Entidad</h1>
 <div id="apDiv2">
 <form action="." oninput="range_control_value.value = range_control.valueAsNumber"> 
-<p>Ingrese el nombre de la Entidad a modificar:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="text" name="entity_name" required /> <input type="submit" value="Nuscar" /></p>
+<p>Ingrese el nombre de la Entidad a modificar:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="text" name="entity_name" required /> <button type="submit" class="boton1">Buscar</button></p>
 </form>
 <h2>Datos Entidad</h2>
 <form action="." oninput="range_control_value.value = range_control.valueAsNumber"> 
@@ -43,7 +44,7 @@
 </select></p>
 <p>Teléfono: <input type="tel" name="tel_control" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dirección: <input type="text" autofocus required />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Correo Electrónico: <input type="email" name="email_control" required />  </p>
 <p>&nbsp;</p>
-<p align="center"><input type="submit" value="Registrar entidad" /></p>
+<p align="center"><button type="submit">Registrar entidad</button></p>
 </form>
 </div></div>
 </body>
