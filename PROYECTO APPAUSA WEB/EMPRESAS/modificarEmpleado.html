@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style type="text/css"> BODY{ font-family:Arial, Helvetica, sans-serif } </style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Modificar Empleado - APPAUSA Web</title>
+<style type="text/css">
+#apDiv1 {
+	position: absolute;
+	left: 9px;
+	top: 9px;
+	width: 1292px;
+	height: 298px;
+	z-index: 1;
+}
+</style>
+</head>
+
+<body>
+<div id="apDiv1">
+<h1>Modificar Datos Empleado</h1>
+<form action="." oninput="range_control_value.value = range_control.valueAsNumber"> 
+<p> Ingrese el numero de identificación del empleado a modificar: <input type="text" name="time_control" /> <input type="submit" value="Buscar" /> </p>
+</form>
+<h2>Datos del Empleado</h2>
+<form action="." oninput="range_control_value.value = range_control.valueAsNumber"> 
+<p> Número de identificación: <input type="text" name="time_control" /> </p>
+<p> Primer Nombre: <input type="text" name="name_control" autofocus required />&nbsp;&nbsp;&nbsp;&nbsp;Segundo Nombre: <input type="text" name="name_control" autofocus required />&nbsp;&nbsp;&nbsp;&nbsp;Primer Apellido: <input type="text" name="name_control" autofocus required />&nbsp;&nbsp;&nbsp;&nbsp;Segundo Apellido: <input type="text" name="name_control" autofocus required /></p>
+<p>Fecha de nacimiento: <input type="date" autofocus required />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Correo Electrónico: <input type="email" name="email_control" required />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Teléfono: <input type="tel" name="tel_control" /></p>
+<p><input type="submit" value="Registrar Empleado" /></p> 
+</form>
+<h2>Datos del Contrato</h2>
+<form>
+<p>Num. Contrato: <input type="text" name="numContrato" autofocus required /> </p>
+<p>Nombre Empresa: <input type="text" name="nomEmpresa" autofocus required />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tipo Contrato: <select name="tipoContrato">
+	<option selected value="0">Seleccionar</option>
+	<option value="1">Indefinido</option>
+    <option value="2">Obra Labor</option>
+    <option value="3">Definido</option></select> Cargo: <input type="text" name="cargo" autofocus required /></p>
+<p>Fecha Inicio: <input type="date" autofocus required />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fecha Fin: <input type="date" autofocus required /></p>
+<p>Sueldo ($): <input type="number" value="sueldo" /></p>
+<p>Funciones:</p>
+<textarea name="comentarios" rows="5" cols="100"></textarea>
+<p>EPS: <select name="eps">
+	<option selected value="0">Seleccionar</option>
+	<option value="1">Compensar</option>
+    <option value="2">Colsubsidio</option>
+    <option value="3">Cafam</option></select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ARL : <select name="arl">
+	<option selected value="0">Seleccionar</option>
+	<option value="1">Sura ARL</option>
+    <option value="2">Seguros Bolivar</option>
+    <option value="3">Metlife</option></select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Caja de compensación : <select name="cajaCompensacion">
+	<option selected value="0">Seleccionar</option>
+	<option value="1">Compensar</option>
+    <option value="2">Colsubsidio</option>
+    <option value="3">Cafam</option>
+</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fondo de pensiones : <select name="fondoPensiones">
+	<option selected value="0">Seleccionar</option>
+	<option value="1">Proteccion</option>
+    <option value="2">Porvenir</option>
+    <option value="3">Colfondos</option>
+</select></p>
+<p></p>
+<p>
+  <input type="submit" value="Registrar contrato" />
+</p>
+</form>
+</div>
+</body>
+</html>

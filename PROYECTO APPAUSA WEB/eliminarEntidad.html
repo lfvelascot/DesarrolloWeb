@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style type="text/css"> BODY{ font-family:Arial, Helvetica, sans-serif } </style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Eliminar Empleado - APPAUSA Web</title>
+<style type="text/css">
+#apDiv1 {
+	position: absolute;
+	left: 9px;
+	top: 9px;
+	width: 1292px;
+	height: 418px;
+	z-index: 1;
+}
+#apDiv2 {
+	position: absolute;
+	left: 234px;
+	top: 8px;
+	width: 874px;
+	height: 393px;
+	z-index: 2;
+}
+</style>
+</head>
+
+<body>
+<div id="apDiv1">
+<div id="apDiv2">
+<h1 align="center">Eliminar Entidad</h1>
+<form action="EMPRESAS/." oninput="range_control_value.value = range_control.valueAsNumber"> 
+<p>Ingrese el nombre de la Entidad a Eliminar : 
+  <input type="text" name="time_control" /> <input type="submit" value="Eliminar Entidad" /> </p>
+</form>
+<form>
+<h3>Datos de la Entidad a eliminar:</h3>
+<textarea name="datos" rows="12" cols="100"></textarea>
+<p> De click aqui si esta seguro de eliminar esta Entidad:   		
+    <input type="submit" value="Confirmar" /></p>
+</form>
+</div>
+</div>
+</body>
+</html>
