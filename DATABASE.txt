@@ -1,0 +1,211 @@
+-- -----------------------------------------------------
+-- Schema appausadb
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `appausadb` DEFAULT CHARACTER SET utf8 ;
+create user 'appausa_user'@'%' identified by 'appausa2020';
+grant all privileges on appausadb.* to 'appausa_user'@'%';
+USE `appausadb` ;
+-- -----------------------------------------------------
+-- TABLAS
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `appausadb`.`tipo_contrato` (
+  `nombre` VARCHAR(45) NOT NULL,
+  `descrip` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`nombre`));
+  
+CREATE TABLE IF NOT EXISTS `appausadb`.`rol` (
+  `nombre` VARCHAR(45) NOT NULL,
+  `descrpción` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`nombre`));
+  
+INSERT INTO rol VALUES ("EMPLEADO","Rol designado a los empleados de las empresas");
+INSERT INTO rol VALUES ("TALENTO HUMANO","Rol para los TH de las empresas");
+INSERT INTO rol VALUES ("ADMINISTRADOR","Rol para los Admon de la aplicación web");
+    
+CREATE TABLE IF NOT EXISTS `appausadb`.`usuario` (
+  `cc` BIGINT(10) NOT NULL,
+  `nombre` VARCHAR(45) NOT NULL,
+  `apellido` VARCHAR(45) NOT NULL,
+  `edad` INT(2) NOT NULL,
+  `correo_electronico` VARCHAR(45) NOT NULL,
+  `telefono` BIGINT(10) NOT NULL,
+  `rol` VARCHAR(45) NULL,
+  PRIMARY KEY (`cc`),
+  INDEX `fk_usuario_rol_idx` (`rol` ASC) VISIBLE,
+  CONSTRAINT `fk_usuario_rol`
+    FOREIGN KEY (`rol`)
+    REFERENCES `appausadb`.`rol` (`nombre`)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE);
+
+INSERT INTO usuario VALUES (1000689373,"Luis Felipe", "Velasco Tao",19,"lfvelascot@academia.usbbog.edu.co",3144432469,"ADMINISTRADOR");
+INSERT INTO usuario VALUES (25741896,"Mariela", "Gonzales",30,"magonzalezd@academia.usbbog.edu.co",3002005040,"TALENTO HUMANO");
+    
+CREATE TABLE IF NOT EXISTS `appausadb`.`cuenta_app_web` (
+  `correo_electronico` VARCHAR(45) NOT NULL,
+  `contrasena` VARCHAR(45) NOT NULL,
+  `usuario` BIGINT(10) NOT NULL,
+  PRIMARY KEY (`correo_electronico`),
+  INDEX `fk_cuentaapp_usuario_idx` (`usuario` ASC) VISIBLE,
+  CONSTRAINT `fk_cuentaapp_usuario`
+    FOREIGN KEY (`usuario`)
+    REFERENCES `appausadb`.`usuario` (`cc`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
+alter table `appausadb`.`cuenta_app_web` add estado varchar(45) not null after `contrasena`;
+
+INSERT INTO `appausadb`.`cuenta_app_web` VALUES ("lfvelascot@academia.usbbog.edu.co","velasco2812","ACTIVO",1000689373); 
+INSERT INTO `appausadb`.`cuenta_app_web` VALUES ("magonzalezd@academia.usbbog.edu.co","velasco2812","ACTIVO",25741896); 
+ 
+CREATE TABLE IF NOT EXISTS `appausadb`.`contrasena_restablecida` (
+  `fecha` DATE NOT NULL,
+  `codigo` VARCHAR(45) NOT NULL,
+  `cuenta` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`fecha`),
+  INDEX `fk_contrasena_restablecida_cuenta_app_web1_idx` (`cuenta` ASC) VISIBLE,
+  CONSTRAINT `fk_contrasena_restablecida_cuenta_app_web1`
+    FOREIGN KEY (`cuenta`)
+    REFERENCES `appausadb`.`cuenta_app_web` (`correo_electronico`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
+CREATE TABLE IF NOT EXISTS `appausadb`.`accion` (
+  `nombre` VARCHAR(45) NOT NULL,
+  `descripción` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`nombre`));
+  
+CREATE TABLE IF NOT EXISTS `appausadb`.`log` (
+  `cuenta` VARCHAR(45) NOT NULL,
+  `accion` VARCHAR(45)NOT NULL,
+  `fecha` DATETIME NOT NULL,
+  `descrip` VARCHAR(45) NOT NULL,
+  INDEX `fk_log_cuenta_app_web1_idx` (`cuenta` ASC) VISIBLE,
+  PRIMARY KEY (`cuenta`, `accion`, `fecha`),
+  INDEX `fk_log_accion_idx` (`accion` ASC) VISIBLE,
+  CONSTRAINT `fk_log_cuenta_app_web1`
+    FOREIGN KEY (`cuenta`)
+    REFERENCES `appausadb`.`cuenta_app_web` (`correo_electronico`)
+    ON DELETE cascade
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_log_accion`
+    FOREIGN KEY (`accion`)
+    REFERENCES `appausadb`.`accion` (`nombre`)
+    ON DELETE restrict
+    ON UPDATE CASCADE);
+  
+CREATE TABLE IF NOT EXISTS `appausadb`.`entidad` (
+  `nombre_entidad` VARCHAR(45) NOT NULL,
+  `tipo` VARCHAR(45) NOT NULL,
+  `telefono` BIGINT(10) NOT NULL,
+  `direccion` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`nombre_entidad`));
+  
+CREATE TABLE IF NOT EXISTS `appausadb`.`solicitud_entidad` (
+  `nombre_entidad` VARCHAR(45) NOT NULL,
+  `tipo` VARCHAR(45) NOT NULL,
+  `telefono` BIGINT(10) NOT NULL,
+  `direccion` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `fecha_env` DATE NOT NULL,
+  `cuenta_emisora` VARCHAR(45) NULL,
+  PRIMARY KEY (`nombre_entidad`),
+  INDEX `fk_solicitud_cuenta_idx` (`cuenta_emisora` ASC) VISIBLE,
+  CONSTRAINT `fk_solicitud_cuenta`
+    FOREIGN KEY (`cuenta_emisora`)
+    REFERENCES `appausadb`.`cuenta_app_web` (`correo_electronico`)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE);
+    
+CREATE TABLE IF NOT EXISTS `appausadb`.`tipo_empresa` (
+  `nombre_tipo` VARCHAR(45) NOT NULL,
+  `actividad` VARCHAR(45) NOT NULL,
+  `descripción` VARCHAR(45) NULL,
+  PRIMARY KEY (`nombre_tipo`));
+  
+CREATE TABLE IF NOT EXISTS `appausadb`.`empresa` (
+  `nit` VARCHAR(45) NOT NULL,
+  `nombre_empresa` VARCHAR(45) NOT NULL,
+  `direccion` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `telefono` BIGINT(10) NOT NULL,
+  `descripción_empresa` TEXT(150) NULL,
+  `num_empleados` INT(4) NOT NULL,
+  `tipo_empresa` VARCHAR(45) NULL,
+  PRIMARY KEY (`nit`),
+  INDEX `fk_empresa_tipo_idx` (`tipo_empresa` ASC) VISIBLE,
+  CONSTRAINT `fk_empresa_tipo`
+    FOREIGN KEY (`tipo_empresa`)
+    REFERENCES `appausadb`.`tipo_empresa` (`nombre_tipo`)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE);
+    
+CREATE TABLE IF NOT EXISTS `appausadb`.`contrato` (
+  `num_contrato` BIGINT NOT NULL,
+  `empleado` BIGINT(10) NOT NULL,
+  `empresa` VARCHAR(45) NOT NULL,
+  `cargo` INT NOT NULL,
+  `fecha_inicio` DATE NOT NULL,
+  `fecha_fin` DATE NULL,
+  `sueldo`  BIGINT (10) NOT NULL,
+  `funciones` TEXT(150) NOT NULL,
+  `arl` VARCHAR(45)  NULL,
+  `caja_compensación` VARCHAR(45)  NULL,
+  `fondo_pensiones` VARCHAR(45)  NULL,
+  `eps` VARCHAR(45)  NULL,
+  `tipo_contrato` VARCHAR(45) NULL,
+  PRIMARY KEY (`num_contrato`, `empleado`),
+  INDEX `fk_contrato_empleado1_idx` (`empleado` ASC) VISIBLE,
+  UNIQUE INDEX `arl_UNIQUE` (`arl` ASC) VISIBLE,
+  UNIQUE INDEX `caja_compensación_UNIQUE` (`caja_compensación` ASC) VISIBLE,
+  UNIQUE INDEX `fondo_pensiones_UNIQUE` (`fondo_pensiones` ASC) VISIBLE,
+  INDEX `fk_contrato_entidad3_idx` (`eps` ASC) VISIBLE,
+  INDEX `fk_contrato_empresa1_idx` (`empresa` ASC) VISIBLE,
+  INDEX `fk_contrato_tipo_contrato1_idx` (`tipo_contrato` ASC) VISIBLE,
+  CONSTRAINT `fk_contrato_empleado`
+    FOREIGN KEY (`empleado`)
+    REFERENCES `appausadb`.`usuario` (`cc`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_contrato_entidad`
+    FOREIGN KEY (`arl`)
+    REFERENCES `appausadb`.`entidad` (`nombre_entidad`)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_contrato_entidad1`
+    FOREIGN KEY (`caja_compensación`)
+    REFERENCES `appausadb`.`entidad` (`nombre_entidad`)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_contrato_entidad2`
+    FOREIGN KEY (`fondo_pensiones`)
+    REFERENCES `appausadb`.`entidad` (`nombre_entidad`)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_contrato_entidad3`
+    FOREIGN KEY (`eps`)
+    REFERENCES `appausadb`.`entidad` (`nombre_entidad`)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_contrato_empresa1`
+    FOREIGN KEY (`empresa`)
+    REFERENCES `appausadb`.`empresa` (`nit`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_contrato_tipo_contrato1`
+    FOREIGN KEY (`tipo_contrato`)
+    REFERENCES `appausadb`.`tipo_contrato` (`nombre`)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE);
+    
+CREATE TABLE IF NOT EXISTS `appausadb`.`solicitud_th`(
+`empleado` BIGINT(10) NOT NULL,
+`fecha_env` DATE NOT NULL,
+primary key(empleado),
+CONSTRAINT `fk_solicitudth_usuario`
+    FOREIGN KEY (`empleado`)
+    REFERENCES `appausadb`.`usuario` (`cc`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);

@@ -259,6 +259,7 @@ $user_ses = $_SESSION['user'];
             <li > <a  href="buscarCuenta.html" target="iframe1">Buscar Cuenta</a></li>
             <li > <a  href="cambiarEstadoCuenta.html" target="iframe1">Cambiar Estado Cuenta</a></li>
             <li > <a  href="verCuentas.html" target="iframe1">Ver todas las Cuentas</a></li>
+            <li > <a  href="asignarNuevoTH.html" target="iframe1">Asignar Nueva Cuenta Talento Humano</a></li>
           </ul>
         </li>
         <li style="width:111px"><a href="#">Empresas</a>
