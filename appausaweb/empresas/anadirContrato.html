@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style type="text/css"> BODY{ font-family:Arial, Helvetica, sans-serif } </style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Añadir Usuario - APPAUSA Web</title>
+<style type="text/css">
+#apDiv1 {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 1292px;
+	height: 1092px;
+	z-index: 1;
+}
+</style>
+<link href="../multi/formularios.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+#apDiv2 {
+	position: absolute;
+	left: 208px;
+	top: 80px;
+	width: 902px;
+	height: 612px;
+	z-index: 2;
+}
+</style>
+</head>
+
+<body>
+<div id="apDiv1">
+<h1 align="center">Añadir Contrato</h1>
+<div id="apDiv2">
+<h2>Datos de Contrato</h2>
+<form>
+<table width="900" height="550" border="0">
+  <tr>
+    <td><p>Num. Contrato:</p></td>
+    <td><input type="number" name="numContrato" autofocus required /></td>
+  </tr>
+  <tr>
+    <td><p>NIT Empresa:</p></td>
+    <td><input type="text" name="nomEmpresa" autofocus required /></td>
+  </tr>
+  <tr>
+    <td><p>Tipo Contrato:</p></td>
+    <td><select name="tipoContrato">
+	<option selected value="0">Seleccionar</option>
+	<option value="1">Indefinido</option>
+    <option value="2">Obra Labor</option>
+    <option value="3">Definido</option></select></td>
+  </tr>
+  <tr>
+    <td><p>Cargo:</p></td>
+    <td><input type="text" name="cargo" autofocus required /></td>
+  </tr>
+  <tr>
+    <td><p>Fecha Inicio:</p></td>
+    <td><input type="date" autofocus required /></td>
+  </tr>
+  <tr>
+    <td><p>Fecha Fin:</p></td>
+    <td><input type="date" autofocus  /></td>
+  </tr>
+  <tr>
+    <td><p>Sueldo ($):</p></td>
+    <td><input type="number" value="sueldo" /></td>
+  </tr>
+  <tr>
+    <td><p>Funciones:</p></td>
+    <td><textarea name="comentarios" rows="5" cols="100"></textarea></td>
+  </tr>
+  <tr>
+    <td><p>EPS:</p></td>
+    <td><select name="eps">
+	<option selected value="0">Seleccionar</option>
+	<option value="1">Compensar</option>
+    <option value="2">Colsubsidio</option>
+    <option value="3">Cafam</option></select></td>
+  </tr>
+  <tr>
+    <td><p>ARL:</p></td>
+    <td><select name="arl">
+	<option selected value="0">Seleccionar</option>
+	<option value="1">Sura ARL</option>
+    <option value="2">Seguros Bolivar</option>
+    <option value="3">Metlife</option></select></td>
+  </tr>
+  <tr>
+    <td><p>Caja de Compensación:</p></td>
+    <td><select name="cajaCompensacion">
+	<option selected value="0">Seleccionar</option>
+	<option value="1">Compensar</option>
+    <option value="2">Colsubsidio</option>
+    <option value="3">Cafam</option>
+</select></td>
+  </tr>
+  <tr>
+    <td><p>Fondo de pensiones :</p></td>
+    <td><select name="fondoPensiones">
+	<option selected value="0">Seleccionar</option>
+	<option value="1">Proteccion</option>
+    <option value="2">Porvenir</option>
+    <option value="3">Colfondos</option>
+</select></td>
+  </tr>
+</table>
+<p align="center">
+  <button type="submit">Registrar Contrato</button></p>
+</form>
+</div>
+
+</div>
+</body>
+</html>
