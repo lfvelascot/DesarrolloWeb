@@ -222,7 +222,7 @@ $user_ses = $_SESSION['user'];
 		include_once('conexion.php');
 		$con=mysqli_connect($host,$usuario,$clave,$bd) or die('Fallo la conexion');
 		mysqli_set_charset($con,"utf8");
-		$consulta = "SELECT nombre,apellido from $bd.usuario where cc = (SELECT usuario from $bd.cuenta_app_web WHERE correo_electronico = '$user_ses');";
+		$consulta = "SELECT nombre,apellido from $bd.usuario where cc = (SELECT usuario from $bd.cuenta WHERE correo_electronico = '$user_ses');";
 		$resultado = mysqli_query($con, $consulta);
 		while($fila = mysqli_fetch_assoc($resultado)){
 			$nom=$fila['nombre'];
@@ -301,3 +301,4 @@ $user_ses = $_SESSION['user'];
   </div>
 </body>
 </html>
+
