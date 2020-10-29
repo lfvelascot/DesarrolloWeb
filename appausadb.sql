@@ -278,3 +278,5 @@ CREATE TABLE `gestion_elemento` (
 );
 -- drop database appausadb;
 
+ALTER TABLE empresa ADD inicio_actividad int(2) AFTER tipo_empresa;
+ALTER TABLE empresa ADD fin_actividad int(2) AFTER inicio_actividad;
