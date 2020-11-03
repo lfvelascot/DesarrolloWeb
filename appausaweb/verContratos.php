@@ -137,15 +137,25 @@ $user_ses = $_SESSION['user'];
 			$sapellido = $mostrar1['sapellido'];
 	}
 	$e = "$pnombre $snombre $papellido $sapellido";	
-	?>	
+	?>
+    <?php
+	if ($rol_ses == "ADMINISTRADOR"){ ?>
     <td><a href="buscarUsuario.php?ccc=<?php echo $mostrar['empleado'] ?>&buscar"><?php echo $e ?></a></td>
+	<?php } else { ?>
+    <td><a href="buscarEmpleado.php?ccc=<?php echo $mostrar['empleado'] ?>&buscar"><?php echo $e ?></a></td>
+	<?php }?>	
     <?php
 	$emp = $mostrar['empresa'];
-    $sql1="SELECT nombre_empresa from empresa where nit = '$emp';";
+	if ($rol_ses == "ADMINISTRADOR"){
+	$sql1="SELECT nombre_empresa from empresa where nit = '$emp';";
 	$result2=mysqli_query($con,$sql1);
 	while($mostrar2=mysqli_fetch_array($result2)){?>
 		<td><a href="buscarEmpresa.php?cempresa=<?php echo $mostrar['empresa'] ?>&buscar"><?php echo $mostrar2['nombre_empresa']?></a></td>
-	<?php }	?>	
+	<?php }		
+	} else {?>
+    	<td><?php echo $emp?></td>
+	<?php } ?>
+    
     <td><?php echo $mostrar['tipo_contrato']?></td>
     <td><?php echo $mostrar['cargo'] ?></td>
     <td><?php echo $mostrar['fecha_inicio'] ?></td>

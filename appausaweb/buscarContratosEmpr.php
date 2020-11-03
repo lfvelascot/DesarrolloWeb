@@ -9,8 +9,8 @@
 	position: absolute;
 	left: 0px;
 	top: 0px;
-	width: 1562px;
-	height: 768px;
+	width: 1618px;
+	height: 710px;
 	z-index: 1;
 }
 #apDiv2 {
@@ -23,17 +23,17 @@
 }
 #apDiv3 {
 	position: absolute;
-	left: 125px;
+	left: 26px;
 	top: 91px;
-	width: 1340px;
+	width: 1564px;
 	height: 586px;
 	z-index: 3;
 }
 #apDiv4 {
 	position: absolute;
-	left: 125px;
+	left: 25px;
 	top: 15px;
-	width: 1345px;
+	width: 1568px;
 	height: 48px;
 	z-index: 4;
 }
@@ -42,17 +42,17 @@
 <style type="text/css">
 #apDiv5 {
 	position: absolute;
-	left: 224px;
-	top: 108px;
-	width: 1158px;
+	left: 66px;
+	top: 116px;
+	width: 1510px;
 	height: 141px;
 	z-index: 5;
 }
 #apDiv6 {
 	position: absolute;
-	left: 223px;
-	top: 292px;
-	width: 1164px;
+	left: 64px;
+	top: 290px;
+	width: 1312px;
 	height: 279px;
 	z-index: 6;
 }
@@ -76,7 +76,7 @@ $user_ses = $_SESSION['user'];
 </div>
 <div id="apDiv4">
 <h1 align="center">Buscar Contratos por Empresa</h1></div>
-<div id="apDiv5">
+<div align="center" id="apDiv5">
 <form>
 	<table width="1160" border=0 >
     <tr >
@@ -88,9 +88,9 @@ $user_ses = $_SESSION['user'];
 </form>
 </div>
 <div id="apDiv6">
-<table width="1158" height="306" border=1 cellspacing=0 cellpadding=2 bordercolor="666633">
+<table width="1312" height="240" border=1 cellspacing=0 cellpadding=2 bordercolor="666633">
   <tr bgcolor="#B1F0FE">
-    <td><b>Num. Contrato</b></td>
+    <td height="116"><b>Num. Contrato</b></td>
     <td><b>Empleado</b></td>
     <td><b>Empresa</b></td>
     <td><b>Tipo Contrato</b></td>

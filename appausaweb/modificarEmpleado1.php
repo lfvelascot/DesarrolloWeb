@@ -50,6 +50,7 @@ $result=mysqli_query($con,$sql);
 while($row=mysqli_fetch_array($result)){
 	include_once ("mcript.php");
 	$vcorreo = $desencriptar($row['correo_electronico']);
+	$vtel = $teldesencriptar($row['telefono']);
 ?>
 <form>
 <table width="1114" height="274" border="0">
@@ -67,15 +68,15 @@ while($row=mysqli_fetch_array($result)){
   </tr>
   <tr>
     <td><p>Primer Nombre: </p></td>
-    <td><input type="text" name="cpnombre" value="<?php echo $row['nombre']?>" autofocus required /></td>
+    <td><input type="text" name="cpnombre" value="<?php echo $row['pnombre']?>" autofocus required /></td>
     <td width="286"><p>Segundo Nombre: </p></td>
-    <td width="242"><input type="text" name="csnombre" value="<?php echo $row['nombre']?>"autofocus /></td>
+    <td width="242"><input type="text" name="csnombre" value="<?php if (!is_null($row['snombre'])) {echo $row['snombre'];}?>"autofocus /></td>
   </tr>
   <tr>
     <td><p>Primer Apellido: </p></td>
-    <td><input type="text" name="cpapellido" value="<?php echo $row['apellido']?>" autofocus required /></td>
+    <td><input type="text" name="cpapellido" value="<?php echo $row['papellido']?>" autofocus required /></td>
     <td><p>Segundo Apellido: </p></td>
-    <td><input type="text" name="csapellido" value="<?php echo $row['apellido']?>" autofocus required /></td>
+    <td><input type="text" name="csapellido" value="<?php echo $row['sapellido']?>" autofocus required /></td>
   </tr>
   <tr>
     <td><p>Fecha de nacimiento:</p></td>
@@ -90,7 +91,7 @@ while($row=mysqli_fetch_array($result)){
   </tr>
   <tr>
     <td><p>Teléfono:</p></td>
-    <td><input type="tel" value="<?php echo $row['telefono']?>" name="ctelefono" /></td>
+    <td><input type="tel" value="<?php echo $vtel?>" name="ctelefono" /></td>
   </tr>
   <tr>
 <?php mysqli_close($con); } ?> 
@@ -115,6 +116,7 @@ if (isset($_GET['mod'])) {
 	$vtelefono = $_GET['ctelefono'];
 	include_once ("mcript.php");
 	$vcorreo = $encriptar($vcorreo);
+	$vtelefono = $telencriptar($vtelefono);
 	$inserta = "UPDATE $bd.usuario SET cc = $vcc, tipo_doc = '$vtipodoc', nombre = '$vnombre1 $vnombre2', apellido = '$vapellido1 $vapellido2', fecha_nam = '$vfechanam', edad = $vedad, correo_electronico = '$vcorreo', telefono = $vtelefono WHERE cc = '$vcc';";
 	if (mysqli_query($con,$inserta)){
 		include_once("date.php");

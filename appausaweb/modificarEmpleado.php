@@ -75,18 +75,28 @@ $cc_ses = $_SESSION['cc'];
 		$result=mysqli_query($con,$sql);
 		if(mysqli_num_rows($result) != 0){
 		while($mostrar=mysqli_fetch_array($result)){
-			include_once ("mcript.php");
-			$vcorreo = $desencriptar($mostrar['correo_electronico']);
+			include ("mcript.php");
+			$dato_desencriptado = $desencriptar($mostrar['correo_electronico']);
+			$pnombre = $mostrar['pnombre'];
+			if (!empty($mostrar['snombre'])){
+				$snombre = $mostrar['snombre'];
+			} else {
+				$snombre = "";
+			}
+			$papellido = $mostrar['papellido'];
+			$sapellido = $mostrar['sapellido'];
+			$tel = $mostrar['telefono'];
+			$tel = $teldesencriptar($tel);
 ?>
     <tr>
     <td height="89"><?php echo $mostrar['cc'] ?></td>
     <td><?php echo $mostrar['tipo_doc'] ?></td>
-    <td><?php echo $mostrar['nombre'] ?></td>
-    <td><?php echo $mostrar['apellido'] ?></td>
+    <td><?php echo "$pnombre $snombre" ?></td>
+    <td><?php echo "$papellido $sapellido" ?></td>
     <td><?php echo $mostrar['fecha_nam'] ?></td>
     <td><?php echo $mostrar['edad'] ?></td>
-    <td><?php echo $vcorreo ?></td>
-    <td><?php echo $mostrar['telefono'] ?></td>
+    <td><?php echo $dato_desencriptado ?></td>
+    <td><?php echo $tel ?></td>
     <td><a href="contratos.html">Contratos</a></td>
     <td><a class="btn btn-primary"  href="modificarEmpleado1.php?id=<?php echo $mostrar['cc']; ?>"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>Modificar</a></td>
     </tr>

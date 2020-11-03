@@ -78,7 +78,7 @@ $cc_ses = $_SESSION['cc'];
 		$con=mysqli_connect($host,$usuario,$clave,$bd) or die('Fallo la conexion');
 		mysqli_set_charset($con,"utf8");
 		$id = $_GET['ccc']; 
-		$sql="SELECT * from usuario WHERE cc = $id and cc != $cc_ses AND e = 1 AND AND usuario.rol = 'EMPLEADO';";
+		$sql="SELECT * from usuario WHERE cc = $id and cc != $cc_ses AND e = 1 AND  usuario.rol = 'EMPLEADO';";
 		$result=mysqli_query($con,$sql);
 		if(mysqli_num_rows($result) != 0){
 		while($mostrar=mysqli_fetch_array($result)){

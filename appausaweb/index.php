@@ -171,8 +171,9 @@ if (isset($_GET['login'])) {
 				$_SESSION['user'] = $dato_encriptado1;
 				$_SESSION['perfil'] = $perfil;
 				$_SESSION['rol'] = $fila[0];
+				$_SESSION['cc'] = $usuario;
 				if ($_SESSION['rol']  == 'TALENTO HUMANO'){
-					$consulta="SELECT empresa FROM $bd.contrato where empleado = $cc AND e = 1;";
+					$consulta="SELECT empresa FROM $bd.contrato WHERE empleado = $usuario AND e = 1;";
 					$resultado = mysqli_query($con, $consulta);
 					if (mysqli_num_rows($resultado) != 0){
 						$fil = mysqli_fetch_row($resultado);
@@ -188,14 +189,14 @@ if (isset($_GET['login'])) {
 							$hact = intval($h);
 							if ($hact >= $inicio && $hact <= $fin){
 								include_once("date.php");		
-								$sql="INSERT INTO $bd.log VALUES ('$correo','$f','Ingreso a la Aplicación','Sin problemas en el acceso',1);";
+								$sql="INSERT INTO $bd.log VALUES ('$dato_encriptado1','$f','Ingreso a la Aplicación','Sin problemas en el acceso ($nit)',1);";
 								mysqli_query($con,$sql);
 								header("Location: indexUsuarios.php");
 								mysqli_close($con);
 								exit;
 							} else {
 								include_once("date.php");		
-								$sql="INSERT INTO $bd.log VALUES ('$correo','$f','Ingreso Fallido','Accedio sin problemas',1);";
+								$sql="INSERT INTO $bd.log VALUES ('$dato_encriptado1','$f','Ingreso Fallido','Accedio sin problemas',1);";
 								mysqli_query($con,$sql);
 								session_destroy();
 								$m = "No tiene permitido el acceso a la aplicación en este horario (Horario de ingreso para su empresas: $inicio:00 - $fin:00)";
@@ -205,7 +206,7 @@ if (isset($_GET['login'])) {
 							}
 						}else {
 							include_once("date.php");		
-							$sql="INSERT INTO $bd.log VALUES ('$correo','$f','Ingreso Fallido','Accedio sin problemas',1);";
+							$sql="INSERT INTO $bd.log VALUES ('$dato_encriptado1','$f','Ingreso Fallido','Accedio sin problemas',1);";
 							mysqli_query($con,$sql);
 							session_destroy();
 							$m = "Usted aun no cuenta con un contrato asociado a la empresa ninguna empresa";
@@ -222,14 +223,14 @@ if (isset($_GET['login'])) {
 					$hora = intval($h);
 					if ($hora >= $inicio && $hora <= $fin){
 						include_once("date.php");		
-						$sql="INSERT INTO $bd.log VALUES ('$correo','$f','Ingreso a la Aplicación','Sin problemas en el acceso',1);";
+						$sql="INSERT INTO $bd.log VALUES ('$dato_encriptado1','$f','Ingreso a la Aplicación','Sin problemas en el acceso',1);";
 						mysqli_query($con,$sql);
 						header("Location: indexUsuarios.php");
 						mysqli_close($con);
 						exit;
 					}else {
 						include_once("date.php");		
-						$sql="INSERT INTO $bd.log VALUES ('$correo','$f','Ingreso Fallido','Accedio sin problemas',1);";
+						$sql="INSERT INTO $bd.log VALUES ('$dato_encriptado1','$f','Ingreso Fallido','Accedio sin problemas',1);";
 						mysqli_query($con,$sql);
 						session_destroy();
 						$m = "No tiene permitido el acceso a la aplicación en este horario";
@@ -240,7 +241,7 @@ if (isset($_GET['login'])) {
 				}
 				$_SESSION['cc'] = $usuario;
 				include_once("date.php");	
-				$sql="INSERT INTO $bd.log VALUES ('$correo','$f','Ingreso a la Aplicación','Sin problemas en el acceso',1);";
+				$sql="INSERT INTO $bd.log VALUES ('$dato_encriptado1','$f','Ingreso a la Aplicación','Sin problemas en el acceso',1);";
 				mysqli_query($con,$sql);
 				$consulta = "UPDATE $bd.cuenta SET intentos_fallidos = 0 WHERE correo_electronico = '$dato_encriptado1';";
 				mysqli_query($con,$consulta);

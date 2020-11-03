@@ -69,7 +69,7 @@ mysqli_set_charset($con,"utf8");
 		include_once("conexion.php");
 		$con=mysqli_connect($host,$usuario,$clave,$bd) or die('Fallo la conexion');
 		mysqli_set_charset($con,"utf8");
-		$sql="SELECT * from perfil where e = 1;";
+		$sql="SELECT * from perfil where e = 1 AND nombre != 'SUPER';";
 		$result=mysqli_query($con,$sql);
 		if(mysqli_num_rows($result) != 0){
 		while($mostrar=mysqli_fetch_array($result)){

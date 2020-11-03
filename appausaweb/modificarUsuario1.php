@@ -42,14 +42,19 @@ if (!isset($_SESSION['user'])) {
 	header("Location: en blanco.html");
 	die();
 }
+$rol_ses = $_SESSION['rol'];
+if ($rol_ses == "TALENTO HUMANO"){
+	$empresa_ses = $_SESSION['empresa'];
+}
 $user_ses = $_SESSION['user'];
-$empresa_ses = $_SESSION['empresa'];
 $id=$_GET['id'];
 $sql="SELECT * from usuario where cc = $id;";
 $result=mysqli_query($con,$sql);
 while($row=mysqli_fetch_array($result)){
 	include_once ("mcript.php");
 	$vcorreo = $desencriptar($row['correo_electronico']);
+	$vtel = $row['telefono'];
+	$vtel = $teldesencriptar($vtel);
 ?>
 <form>
 <table width="1114" height="274" border="0">
@@ -67,15 +72,15 @@ while($row=mysqli_fetch_array($result)){
   </tr>
   <tr>
     <td><p>Primer Nombre: </p></td>
-    <td><input type="text" name="cpnombre" value="<?php echo $row['nombre']?>" autofocus required /></td>
+    <td><input type="text" name="cpnombre" value="<?php echo $row['pnombre']?>" autofocus required /></td>
     <td width="286"><p>Segundo Nombre: </p></td>
-    <td width="242"><input type="text" name="csnombre" value="<?php echo $row['nombre']?>"autofocus /></td>
+    <td width="242"><input type="text" name="csnombre" value="<?php if (!is_null($row['snombre'])) {echo $row['snombre'];}?>"autofocus /></td>
   </tr>
   <tr>
     <td><p>Primer Apellido: </p></td>
-    <td><input type="text" name="cpapellido" value="<?php echo $row['apellido']?>" autofocus required /></td>
+    <td><input type="text" name="cpapellido" value="<?php echo $row['papellido']?>" autofocus required /></td>
     <td><p>Segundo Apellido: </p></td>
-    <td><input type="text" name="csapellido" value="<?php echo $row['apellido']?>" autofocus required /></td>
+    <td><input type="text" name="csapellido" value="<?php echo $row['sapellido']?>" autofocus required /></td>
   </tr>
   <tr>
     <td><p>Fecha de nacimiento:</p></td>
@@ -90,16 +95,23 @@ while($row=mysqli_fetch_array($result)){
   </tr>
   <tr>
     <td><p>Teléfono:</p></td>
-    <td><input type="tel" value="<?php echo $row['telefono']?>" name="ctelefono" /></td>
+    <td><input type="tel" value="<?php echo $vtel?>" name="ctelefono" /></td>
   </tr>
   <tr>
-<?php 
-mysqli_close($con);
-?>
-    <option value="<?php echo $row['rol'] ?>" selected><?php echo $row['rol']?></option>
-   <?php } ?> 
-</select></td>
+    <td><p>Rol:</p></td>
+    <td><select name="crol">
+	<option value="0">Seleccionar</option>
+    <?php 
+		$sql="SELECT * from $bd.rol;";
+		$result=mysqli_query($con,$sql);
+		while($mostrar=mysqli_fetch_array($result)){
+		 ?>
+	<option value="<?php echo $mostrar['nombre'] ?>"><?php echo $mostrar['nombre'] ?></option>
+	<?php } ?>
+  <option selected value="<?php echo $row['rol']?>"><?php echo $row['rol'] ?></option>
+  </select></td>
   </tr>
+  <?php }?>
 </table>
 <p align="center">
   <button type="submit" name="mod">Modificar Usuario</button>

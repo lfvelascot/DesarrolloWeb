@@ -98,9 +98,9 @@ $user_ses = $_SESSION['user'];
 </form>
 </div>
 <div id="apDiv6">
-<table width="1158" height="306" border=1 cellspacing=0 cellpadding=2 bordercolor="666633">
+<table width="1158" height="210" border=1 cellspacing=0 cellpadding=2 bordercolor="666633">
   <tr bgcolor="#B1F0FE">
-    <td><b>Num. Contrato</b></td>
+    <td height="84"><b>Num. Contrato</b></td>
     <td><b>Empleado</b></td>
     <td><b>Empresa</b></td>
     <td><b>Tipo Contrato</b></td>
