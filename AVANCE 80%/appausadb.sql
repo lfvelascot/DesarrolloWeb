@@ -20,7 +20,10 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `appausadb`
 --
-
+create user 'appausa_user'@'%' identified by 'appausa2020';
+CREATE SCHEMA IF NOT EXISTS `appausadb` DEFAULT CHARACTER SET utf8 ;
+grant all privileges on appausadb.* to 'appausa_user'@'%';
+USE `appausadb` ;
 -- --------------------------------------------------------
 
 --
