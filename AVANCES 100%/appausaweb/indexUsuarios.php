@@ -95,8 +95,8 @@
 }
 #apDiv4 {
 	position: absolute;
-	left: 139px;
-	top: 11px;
+	left: 942px;
+	top: 6px;
 	width: 73px;
 	height: 74px;
 	z-index: 3;
@@ -104,8 +104,8 @@
 }
 #apDiv5 {
 	position: absolute;
-	left: 254px;
-	top: 19px;
+	left: 985px;
+	top: 22px;
 	width: 853px;
 	height: 53px;
 	z-index: 4;
@@ -204,7 +204,7 @@
 	width: 1917px;
 	height: 899px;
 	z-index: 1;
-	background: url(multi/background2.png) bottom no-repeat
+	background:url(multi/background2.png) bottom no-repeat;
 }
 </style>
 </head>
@@ -226,11 +226,11 @@ $resultado = mysqli_query($con, $consulta);
 <div id="apDiv14"></div>
 <div id="apDiv1">
   <div id="apDiv2">
-    <div id="apDiv4"><a title="Pagina Empresas" href="empresas/paginaEmpresas.html"><img src="multi/icono.png" width="72" height="73"></a></div>
+    <div id="apDiv4"><a title="Pagina Empresas" href="indexUsuarios.php"><img src="multi/icono.png" width="87" height="81"></a></div>
 	<div id="apDiv5">
   	<img src="multi/textopagina.png">
 	</div>
-  </div>
+</div>
   <div id="Div0">
     <div id="header" style="z-index:2">
     <nav>

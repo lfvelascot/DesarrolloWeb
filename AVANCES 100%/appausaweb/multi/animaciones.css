@@ -1,5 +1,3 @@
-
-
 input[type=text], input[type=password] {
   width: 100%;
   padding: 11px 17px;
@@ -35,3 +33,14 @@ a{
 a:hover {
   color:#FFF;
 }
+
+div {
+  transition-property: opacity, left;
+  transition-duration: 3s, 5s, 2s, 1s;
+}
+
+.upbar {
+  position: -webkit-sticky;  // required for Safari
+  position: sticky;
+  top: 0; // required as well.
+}   

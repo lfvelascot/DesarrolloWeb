@@ -21,7 +21,7 @@
 	left: 0px;
 	top: 0px;
 	width: 1919px;
-	height: 112px;
+	height: 118px;
 	z-index: 2;
 	background: #74B1F5;
 	visibility: visible;
@@ -40,28 +40,28 @@
 }
 #apDiv4 {
 	position: absolute;
-	left: 80px;
-	top: 18px;
+	left: 905px;
+	top: 13px;
 	width: 73px;
 	height: 74px;
 	z-index: 3;
 }
 #apDiv5 {
 	position: absolute;
-	left: 180px;
-	top: 31px;
+	left: 977px;
+	top: 38px;
 	width: 853px;
 	height: 53px;
 	z-index: 4;
 }
 #apDiv6 {
 	position: absolute;
-	left: 345px;
-	top: 640px;
-	width: 1284px;
-	height: 53px;
+	left: 335px;
+	top: 632px;
+	width: 1291px;
+	height: 140px;
 	z-index: 3;
-	background-color: #FFFFFF;
+	background:url(multi/bgInicio2.png);
 }
 #apDiv7 {
 	position: absolute;
@@ -103,7 +103,8 @@
 	height: 871px;
 	z-index: 1;
 	color: #D6D6D6;
-	background:url(multi/background1.jpg)
+	background:url(multi/background1.jpg);
+	transition-timing-function: ease-in-out;
 }
 #apDiv1 #apDiv11 #apDiv3 #apDiv7 h1 {
 	color: #000000;
@@ -113,7 +114,17 @@
 }
 </style>
 <link href="multi/animaciones.css" rel="stylesheet" type="text/css" media="all" />
-
+<style type="text/css">
+#apDiv12 {
+	position: absolute;
+	left: 14px;
+	top: 10px;
+	width: 1262px;
+	height: 118px;
+	z-index: 2;
+}   
+}
+</style>
 </head>
 
 <body>
@@ -124,8 +135,8 @@ if (isset($_GET['failed'])) {
 }
 ?>
 <div id="Main">
-  <div id="apDiv2">
-    <div id="apDiv4"><a title="Pagina Principal" href="index.html"><img src="multi/icono.png" width="72" height="73"></a></div>
+  <div id="apDiv2" class="upbar">
+    <div id="apDiv4"><a title="Pagina Principal" href="./"><img src="multi/icono.png" width="97" height="91"></a></div>
 	<div id="apDiv5">
   	<img src="multi/textopagina.png">
 	</div>
@@ -302,9 +313,15 @@ if (isset($_GET['login'])) {
 ?>
 </div>
 </div>
-<div id="apDiv6" ><p>Descripción</div>
+<div id="apDiv6" >
+<div id="apDiv12">
+<p><b>Descripción</b></p>
+<p>APPAUSA Sistema de gestión de empleados es una aplicación web, por medio de la cual las empresas pueden gestionar los datos de sus empleados y los contratos firmados en su empresa, además de tener presente la duración de los contratos con entidades externas relacionadas con la seguridad social de sus empleados.</p>
+</div>
+</div>
 </div>
 </div> 
+
 </div>
 </body>
 </html>

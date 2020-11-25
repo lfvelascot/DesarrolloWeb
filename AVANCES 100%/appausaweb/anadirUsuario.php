@@ -95,17 +95,22 @@ if (isset($_GET['error'])){
   <tr>
     <td><p>Correo Electrónico:</p></td>
     <td><input type="email" name="ccorreo" value="<?php if (isset($_GET['error'])) {echo $vcorreo;} else {echo "";}?>"  pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" title="El correo debe tener arroba @ y un dominio para validar su existenica" required /></td>
-  </tr>
-  <tr>
     <td><p>Teléfono:</p></td>
     <td><input type="number" value= "<?php if (isset($_GET['error'])) { $vtel = $_GET['etelefono']; $vtel =  $teldesencriptar($vtel); echo $vtel;} else { echo ""; } if (isset($_GET['tele'])){ echo $vtel;} else { echo "";}?>" name="ctelefono"   pattern"^[0-9]\d{7,10}$" title="El numero de telefono debe ser de 7 o 10 digitos"/></td>
+  </tr>
+  <tr>
+    <td><p>Dirección: </p></td>
+    <td><input type="text" name="cpapellido" value="<?php if (isset($_GET['error'])) {echo $vapellido1;} else {echo "";}?>" autofocus required /></td>
+    <td><p>Ciudad: </p></td>
+    <td><input type="text" name="csapellido" value="<?php if (isset($_GET['error'])) {echo $vapellido2;} else {echo "";}?>" autofocus required /></td>
+
   </tr>
   <tr>
     <td><p>Rol:</p></td>
     <td><select name="crol" title="Seleccione una opción">
 	<option selected value="0">Seleccionar</option>
     <?php 
-		$sql="SELECT * from rol;";
+		$sql="SELECT * from rol WHERE nombre != 'SUPER';";
 		$result=mysqli_query($con,$sql);
 		while($mostrar=mysqli_fetch_array($result)){
 		 ?>
